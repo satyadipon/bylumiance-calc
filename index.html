@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony a6700 — Field Settings Cheat Sheet</title>
+  <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css">
+  <script src="https://unpkg.com/@knadh/oat/oat.min.js" defer></script>
+  <style>
+    /* ============================================================
+       ByLumiance Dark Theme Overrides
+       ============================================================ */
+    :root {
+      --color-bg: #0a0a14 !important;
+      --color-bg-secondary: #12121f !important;
+      --color-bg-tertiary: #1a1a2e !important;
+      --color-bg-elevated: #1e1e32 !important;
+      --color-border: rgba(255, 255, 255, 0.08) !important;
+      --color-text: #ffffff !important;
+      --color-text-secondary: rgba(255, 255, 255, 0.55) !important;
+      --color-accent: #7c3aed !important;
+      --color-accent-hover: #8b5cf6 !important;
+      --color-accent-bg: rgba(124, 58, 237, 0.1) !important;
+      --color-accent-border: rgba(124, 58, 237, 0.3) !important;
+      color-scheme: dark;
+    }
+
+    html, body {
+      background: #0a0a14;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* Brand text gradient */
+    .brand-gradient {
+      background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Oat UI dark overrides */
+    body { background: #0a0a14; color: #fff; }
+    a { color: #a78bfa; }
+    a:hover { color: #c4b5fd; }
+    h1, h2, h3, h4, h5, h6 { color: #fff; }
+    p, .text-light { color: rgba(255, 255, 255, 0.55); }
+    select, input, textarea {
+      background: #12121f;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    select:focus, input:focus, textarea:focus {
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+    label { color: rgba(255, 255, 255, 0.8); }
+    button, .button, [role="button"] {
+      background: #7c3aed;
+      color: #fff;
+    }
+    button:hover, .button:hover, [role="button"]:hover {
+      background: #8b5cf6;
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    }
+    button.outline, .button.outline {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.8);
+    }
+    button.outline:hover, .button.outline:hover {
+      border-color: #7c3aed;
+      background: rgba(124, 58, 237, 0.08);
+      color: #c4b5fd;
+    }
+    table { border-color: rgba(255, 255, 255, 0.08); }
+    th { background: #12121f; color: rgba(255, 255, 255, 0.7); }
+    td { border-color: rgba(255, 255, 255, 0.06); color: #fff; }
+    code { background: #1a1a2e; color: #c4b5fd; }
+    .card, article.card {
+      background: #12121f;
+      border-color: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    article.card header h3, article.card header h4 { color: #fff; }
+    article.card p { color: rgba(255, 255, 255, 0.6); }
+
+    hr { border-color: rgba(255, 255, 255, 0.08); }
+
+    /* Oat tabs dark override */
+    ot-tabs::part(tab) {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    ot-tabs::part(tab-active) {
+      color: #c4b5fd;
+    }
+    ot-tabs::part(tab-indicator) {
+      background: #7c3aed;
+    }
+
+    /* ============================================================
+       Custom component styles
+       ============================================================ */
+    header.app-header {
+      text-align: center;
+      padding: 2.5rem 0 2rem;
+    }
+    header.app-header h1 {
+      margin-bottom: 0.3rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+    header.app-header p { margin-top: 0.3rem; }
+
+    .result-card {
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      background: #12121f;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .result-card h3 { color: #fff; margin-top: 0; }
+
+    .no-result {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+    }
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .setting-label {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .setting-value {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #c4b5fd;
+    }
+
+    .highlight-box {
+      background: rgba(124, 58, 237, 0.06);
+      border-left: 3px solid #7c3aed;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .mnemonic-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .mnemonic-row article {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .note-section {
+      margin-bottom: 2rem;
+    }
+    .note-section h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .wb-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .wb-row > div {
+      flex: 0 0 auto;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      background: #1a1a2e;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      min-width: 110px;
+    }
+    .wb-row strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #c4b5fd;
+      margin-bottom: 0.2rem;
+    }
+    .wb-row small {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .quick-tag {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      padding: 0.15rem 0.55rem;
+      border-radius: 0.3rem;
+      margin: 0.15rem 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .quick-rules-card p {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .settings-grid { grid-template-columns: 1fr; }
+      header.app-header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header class="app-header">
+    <h1>
+      <span class="brand-gradient">Sony a6700</span> — Field Settings
+    </h1>
+    <p>18–55mm f/3.5–5.6 &nbsp;|&nbsp; 56mm f/1.4</p>
+  </header>
+
+  <ot-tabs>
+    <!-- Tab 1: Settings Finder -->
+    <section title="Settings Finder">
+      <p>Select your shooting conditions below to get the recommended camera settings.</p>
+
+      <form id="settings-form">
+        <div class="row">
+          <div class="col-6 col-sm-12">
+            <div data-field>
+              <label>Weather Condition</label>
+              <select id="condition" aria-label="Weather condition">
+                <option value="">— Select —</option>
+                <option value="sunny">☀️ Sunny</option>
+                <option value="cloudy">☁️ Cloudy</option>
+                <option value="rainy">🌧️ Rainy</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6 col-sm-12">
+            <div data-field>
+              <label>Time of Day</label>
+              <select id="timeofday" aria-label="Time of day">
+                <option value="">— Select —</option>
+                <option value="golden">🌅 Golden Hour</option>
+                <option value="midday">☀️ Midday</option>
+                <option value="blue">🌆 Blue Hour</option>
+                <option value="night">🌙 Night</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6 col-sm-12">
+            <div data-field>
+              <label>Lens</label>
+              <select id="lens" aria-label="Lens">
+                <option value="">— Select —</option>
+                <option value="18-55">18–55mm f/3.5–5.6</option>
+                <option value="56">56mm f/1.4</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6 col-sm-12">
+            <div data-field>
+              <label>Shoot Type</label>
+              <select id="type" aria-label="Shoot type">
+                <option value="">— Select —</option>
+                <option value="photo-landscape">📷 Photo — Landscape</option>
+                <option value="photo-portrait">📷 Photo — Portrait</option>
+                <option value="video-cinematic">🎥 Video — Cinematic</option>
+                <option value="video-portrait">🎥 Video — Portrait</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div id="result" class="no-result">
+        <p>👆 Select all four fields above to see your settings.</p>
+      </div>
+
+      <div class="row" style="margin-top: 1.5rem;">
+        <div class="col-6 col-sm-12">
+          <article class="card quick-rules-card">
+            <header><h4>🔒 Quick Rules</h4></header>
+            <p><span class="quick-tag">Sunny 16</span> ISO 100 · f/8 · 1/250s</p>
+            <p><span class="quick-tag">Video SS</span> Shutter = 2× frame rate (24fps → 1/50s)</p>
+            <p><span class="quick-tag">ISO Ceiling</span> Photo: 6400 · Video: 3200</p>
+          </article>
+        </div>
+        <div class="col-6 col-sm-12">
+          <article class="card quick-rules-card">
+            <header><h4>🔑 Lens Identity</h4></header>
+            <p><strong>18–55mm</strong> — Landscapes, walk-around video. Weak in low light.</p>
+            <p><strong>56mm f/1.4</strong> — Portrait king, subject isolation, night saver.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Notes & Memorisation -->
+    <section title="Notes & Tips">
+      <div class="note-section">
+        <h3>🧠 Lazy-Load Memory System</h3>
+        <p>Don't memorise 96 cells. Learn these 6 layers instead.</p>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 1 — Lens Identity (Non-Negotiable)</h3>
+        <table>
+          <thead>
+            <tr><th>Lens</th><th>Aperture Range</th><th>Best For</th><th>Weakness</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>18–55mm f/3.5–5.6</strong></td><td>f/3.5–f/22</td><td>Landscapes, walk-around video</td><td>Low light (use tripod at night)</td></tr>
+            <tr><td><strong>56mm f/1.4</strong></td><td>f/1.4–f/16</td><td>Portraits, subject isolation, night</td><td>No zoom, tight framing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 2 — Aperture by Scenario (The f-stop Cheat)</h3>
+        <table>
+          <thead>
+            <tr><th>Scenario</th><th>18–55mm</th><th>56mm</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>📷 Landscape</td><td>f/8–f/11 (sharpest)</td><td>f/4–f/8</td></tr>
+            <tr><td>📷 Portrait</td><td>f/3.5–f/5.6 (max available)</td><td>f/1.4–f/2.8</td></tr>
+            <tr><td>🎥 Cinematic</td><td>f/8–f/11 (deep DOF)</td><td>f/2.0–f/4</td></tr>
+            <tr><td>🎥 Portrait Vid</td><td>f/3.5–f/5.6 (max available)</td><td>f/1.4 (dreamy bokeh)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 3 — ISO by Light (Think in Stops)</h3>
+        <table>
+          <thead>
+            <tr><th>Light Level</th><th>ISO Range</th><th>When</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>☀️ Full Sun</td><td>100</td><td>Midday, Golden Hour</td></tr>
+            <tr><td>☁️ Overcast</td><td>200–800</td><td>Cloudy daytime</td></tr>
+            <tr><td>🌆 Dusk/Dawn</td><td>400–1600</td><td>Blue hour, twilight</td></tr>
+            <tr><td>🌙 Night (56mm)</td><td>800–3200</td><td>f/1.4 saves you</td></tr>
+            <tr><td>🌙 Night (18–55mm)</td><td>1600–6400</td><td>Tripod essential below 1/30s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 4 — White Balance by Temperature (K = Kelvin)</h3>
+        <div class="wb-row">
+          <div><strong>🌅 5500–6500K</strong><small>Golden Hour · Any weather</small></div>
+          <div><strong>☀️ 5200K</strong><small>Midday Sun · Sunny</small></div>
+          <div><strong>☁️ 5600K</strong><small>Midday Cloud · Cloudy</small></div>
+          <div><strong>🌧️ 5800K</strong><small>Midday Rain · Rainy</small></div>
+          <div><strong>🌆 4200–5000K</strong><small>Blue Hour · Any weather</small></div>
+          <div><strong>🌙 3400–4000K</strong><small>Night · Any weather</small></div>
+        </div>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 5 — Mode Decision Tree</h3>
+        <div class="row">
+          <div class="col-6 col-sm-12">
+            <article class="card">
+              <header><h4>📷 Photo</h4></header>
+              <p><strong>Portrait?</strong> → A-Priority (control DOF)</p>
+              <p><strong>Landscape?</strong> → A-Priority (control aperture)</p>
+            </article>
+          </div>
+          <div class="col-6 col-sm-12">
+            <article class="card">
+              <header><h4>🎥 Video</h4></header>
+              <p><strong>Cinematic?</strong> → Manual (full control)</p>
+              <p><strong>Portrait Vid?</strong> → Manual (fixed 1/50s shutter)</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-section">
+        <h3>Layer 6 — Focus Rules</h3>
+        <table>
+          <thead>
+            <tr><th>Subject</th><th>Photo</th><th>Video</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Person (portrait)</td><td>Eye-AF</td><td>Eye-AF</td></tr>
+            <tr><td>Landscape / city</td><td>MF at ∞ or hyperfocal</td><td>MF (no hunting)</td></tr>
+            <tr><td>General static</td><td>AF-S</td><td>MF</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-section">
+        <h3>🔧 Custom Button Assignments</h3>
+        <table>
+          <thead>
+            <tr><th>Button</th><th>Assign</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>C1</strong></td><td>WB quick-select</td><td>Most-changed setting</td></tr>
+            <tr><td><strong>C2</strong></td><td>Focus mode toggle</td><td>Switch MF ↔ Eye-AF fast</td></tr>
+            <tr><td><strong>C3</strong></td><td>Zebra 94%</td><td>Nail exposure instantly</td></tr>
+            <tr><td><strong>AEL</strong></td><td>AF/MF hold + toggle</td><td>Back-button focus</td></tr>
+            <tr><td><strong>Dial</strong></td><td>ISO (rear) · Aperture (front)</td><td>Manual muscle memory</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-section">
+        <h3>📌 Mnemonics (Commit These First)</h3>
+        <div class="mnemonic-row">
+          <article class="card">
+            <header><h4>Sunny 16 (digital)</h4></header>
+            <p>ISO 100 · f/8 · 1/250s → tweak ±1 stop</p>
+          </article>
+          <article class="card">
+            <header><h4>Golden ≠ Blue</h4></header>
+            <p>Golden = warm WB (6500K+)<br>Blue = cool WB (4800K−)</p>
+          </article>
+          <article class="card">
+            <header><h4>56mm = Portrait King</h4></header>
+            <p>Always shoot wide-open (f/1.4–f/2.8) unless landscape</p>
+          </article>
+          <article class="card">
+            <header><h4>18mm = Landscape Anchor</h4></header>
+            <p>f/8–f/11, focus ⅓ into frame</p>
+          </article>
+          <article class="card">
+            <header><h4>Video SS Rule</h4></header>
+            <p>Shutter = 2× frame rate<br>24fps → 1/50, 60fps → 1/125</p>
+          </article>
+          <article class="card">
+            <header><h4>ISO Ceiling</h4></header>
+            <p>Photo: 6400<br>Video: 3200 (S-Log3 base 800/2500)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </ot-tabs>
+
+  <footer>
+    <p><small>Sony a6700 Field Settings Cheat Sheet · Print-ready · Memorise the layers, not the cells</small></p>
+  </footer>
+</div>
+
+<script>
+// ============================================================
+// HARDCODED MASTER SETTINGS DATA (96 rows from cheatsheet)
+// ============================================================
+var MASTER_DATA = [
+  {c:"sunny",t:"golden",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/8–f/11",shutter:"Auto",iso:"100",wb:"5800K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"sunny",t:"golden",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/4–f/5.6",shutter:"Auto",iso:"100",wb:"5500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"golden",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4–f/2.0",shutter:"Auto",iso:"100",wb:"5500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"golden",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6–f/8",shutter:"Auto",iso:"100",wb:"5600K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"sunny",t:"golden",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/8",shutter:"1/50s",iso:"100",wb:"5800K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"golden",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/4",shutter:"1/50s",iso:"100",wb:"5500K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"golden",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.8",shutter:"1/50s",iso:"100",wb:"5600K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"golden",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"100",wb:"5500K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"midday",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/8–f/11",shutter:"Auto",iso:"100",wb:"5200K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"sunny",t:"midday",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/5.6",shutter:"Auto",iso:"100",wb:"5200K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"midday",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4–f/2.8",shutter:"Auto",iso:"100",wb:"5200K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"midday",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6–f/8",shutter:"Auto",iso:"100",wb:"5200K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"sunny",t:"midday",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/11",shutter:"1/50s",iso:"100",wb:"5200K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"midday",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/5.6",shutter:"1/50s",iso:"100",wb:"5200K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"midday",l:"56",y:"video-cinematic",mode:"M",aperture:"f/4",shutter:"1/50s",iso:"100",wb:"5200K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"midday",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"100",wb:"5200K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"blue",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/8",shutter:"Auto",iso:"400–800",wb:"4200K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"sunny",t:"blue",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/4",shutter:"Auto",iso:"400–800",wb:"4500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"blue",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4",shutter:"Auto",iso:"200–400",wb:"4500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"blue",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/4–f/5.6",shutter:"Auto",iso:"400–800",wb:"4400K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"sunny",t:"blue",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/5.6",shutter:"1/50s",iso:"800–1600",wb:"4200K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"blue",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"800–1600",wb:"4300K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"blue",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.0",shutter:"1/50s",iso:"400–800",wb:"4400K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"blue",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"400–800",wb:"4300K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"night",l:"18-55",y:"photo-landscape",mode:"M",aperture:"f/3.5",shutter:"10–20s",iso:"800–1600",wb:"3400K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"sunny",t:"night",l:"18-55",y:"photo-portrait",mode:"M",aperture:"f/3.5",shutter:"1/60s",iso:"1600–3200",wb:"3800K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"night",l:"56",y:"photo-portrait",mode:"M",aperture:"f/1.4",shutter:"1/60–1/125s",iso:"400–1600",wb:"3800K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"night",l:"56",y:"photo-landscape",mode:"M",aperture:"f/2.8",shutter:"2–5s",iso:"800–1600",wb:"3600K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"sunny",t:"night",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"3200–6400",wb:"3600K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"night",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"3200–6400",wb:"3800K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"sunny",t:"night",l:"56",y:"video-cinematic",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"800–2500",wb:"3600K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"sunny",t:"night",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"800–2500",wb:"3800K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"golden",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/8",shutter:"Auto",iso:"200–400",wb:"6200K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"cloudy",t:"golden",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/4–f/5.6",shutter:"Auto",iso:"200–400",wb:"6000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"golden",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4–f/2.0",shutter:"Auto",iso:"100–200",wb:"6000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"golden",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6–f/8",shutter:"Auto",iso:"200–400",wb:"6100K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"cloudy",t:"golden",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/8",shutter:"1/50s",iso:"200–400",wb:"6200K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"golden",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/4",shutter:"1/50s",iso:"200–400",wb:"6000K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"golden",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.8",shutter:"1/50s",iso:"100–200",wb:"6100K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"golden",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"100–200",wb:"6000K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"midday",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/8",shutter:"Auto",iso:"400–800",wb:"5600K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"cloudy",t:"midday",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/5.6",shutter:"Auto",iso:"400–800",wb:"5500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"midday",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4–f/2.8",shutter:"Auto",iso:"200–400",wb:"5500K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"midday",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6",shutter:"Auto",iso:"400–800",wb:"5600K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"cloudy",t:"midday",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/8",shutter:"1/50s",iso:"400–800",wb:"5600K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"midday",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/5.6",shutter:"1/50s",iso:"400–800",wb:"5500K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"midday",l:"56",y:"video-cinematic",mode:"M",aperture:"f/4",shutter:"1/50s",iso:"200–400",wb:"5600K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"midday",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"200–400",wb:"5500K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"blue",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6",shutter:"Auto",iso:"800–1600",wb:"4600K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"cloudy",t:"blue",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/3.5",shutter:"Auto",iso:"800–1600",wb:"4800K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"blue",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4",shutter:"Auto",iso:"400–800",wb:"4800K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"blue",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/4",shutter:"Auto",iso:"800–1600",wb:"4700K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"cloudy",t:"blue",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"1600–3200",wb:"4600K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"blue",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"1600–3200",wb:"4700K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"blue",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.0",shutter:"1/50s",iso:"800–1600",wb:"4700K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"blue",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"800–1600",wb:"4700K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"night",l:"18-55",y:"photo-landscape",mode:"M",aperture:"f/3.5",shutter:"15–30s",iso:"1600–3200",wb:"3500K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"cloudy",t:"night",l:"18-55",y:"photo-portrait",mode:"M",aperture:"f/3.5",shutter:"1/30–1/60s",iso:"3200–6400",wb:"3900K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"night",l:"56",y:"photo-portrait",mode:"M",aperture:"f/1.4",shutter:"1/60–1/125s",iso:"800–3200",wb:"3900K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"night",l:"56",y:"photo-landscape",mode:"M",aperture:"f/2.8",shutter:"5–10s",iso:"1600–3200",wb:"3700K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"cloudy",t:"night",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"6400+",wb:"3600K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"night",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"6400+",wb:"3900K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"cloudy",t:"night",l:"56",y:"video-cinematic",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"2500–6400",wb:"3600K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"cloudy",t:"night",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"2500–6400",wb:"3900K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"golden",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6–f/8",shutter:"Auto",iso:"400–800",wb:"6400K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"rainy",t:"golden",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/3.5",shutter:"Auto",iso:"400–800",wb:"6200K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"golden",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4",shutter:"Auto",iso:"200–400",wb:"6200K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"golden",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/4–f/5.6",shutter:"Auto",iso:"400–800",wb:"6300K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"rainy",t:"golden",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/5.6",shutter:"1/50s",iso:"400–800",wb:"6400K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"golden",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"400–800",wb:"6200K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"golden",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.8",shutter:"1/50s",iso:"200–400",wb:"6300K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"golden",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"200–400",wb:"6200K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"midday",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/5.6",shutter:"Auto",iso:"800–1600",wb:"5800K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"rainy",t:"midday",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/3.5",shutter:"Auto",iso:"800–1600",wb:"5700K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"midday",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4",shutter:"Auto",iso:"400–800",wb:"5700K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"midday",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/4",shutter:"Auto",iso:"800–1600",wb:"5800K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"rainy",t:"midday",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/5.6",shutter:"1/50s",iso:"800–1600",wb:"5800K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"midday",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"800–1600",wb:"5700K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"midday",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.8",shutter:"1/50s",iso:"400–800",wb:"5800K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"midday",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"400–800",wb:"5700K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"blue",l:"18-55",y:"photo-landscape",mode:"A-Priority",aperture:"f/3.5",shutter:"Auto",iso:"1600–3200",wb:"4800K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"rainy",t:"blue",l:"18-55",y:"photo-portrait",mode:"A-Priority",aperture:"f/3.5",shutter:"Auto",iso:"1600–3200",wb:"5000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"blue",l:"56",y:"photo-portrait",mode:"A-Priority",aperture:"f/1.4",shutter:"Auto",iso:"800–1600",wb:"5000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"blue",l:"56",y:"photo-landscape",mode:"A-Priority",aperture:"f/2.8",shutter:"Auto",iso:"1600–3200",wb:"4900K / Std",meter:"Multi",focus:"AF-S"},
+  {c:"rainy",t:"blue",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"3200–6400",wb:"4800K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"blue",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"3200–6400",wb:"4900K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"blue",l:"56",y:"video-cinematic",mode:"M",aperture:"f/2.0",shutter:"1/50s",iso:"1600–3200",wb:"4900K / S-Cinetone",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"blue",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"1600–3200",wb:"4900K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"night",l:"18-55",y:"photo-landscape",mode:"M",aperture:"f/3.5",shutter:"20–30s",iso:"3200–6400",wb:"3700K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"rainy",t:"night",l:"18-55",y:"photo-portrait",mode:"M",aperture:"f/3.5",shutter:"1/30s",iso:"6400–12800",wb:"4000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"night",l:"56",y:"photo-portrait",mode:"M",aperture:"f/1.4",shutter:"1/60s",iso:"1600–6400",wb:"4000K / Portrait",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"night",l:"56",y:"photo-landscape",mode:"M",aperture:"f/2.0",shutter:"8–15s",iso:"3200–6400",wb:"3800K / Std",meter:"Multi",focus:"MF ∞"},
+  {c:"rainy",t:"night",l:"18-55",y:"video-cinematic",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"6400+",wb:"3700K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"night",l:"18-55",y:"video-portrait",mode:"M",aperture:"f/3.5",shutter:"1/50s",iso:"6400+",wb:"4000K / S-Cinetone",meter:"Center",focus:"Eye-AF"},
+  {c:"rainy",t:"night",l:"56",y:"video-cinematic",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"2500–6400",wb:"3700K / S-Log3",meter:"Multi",focus:"MF"},
+  {c:"rainy",t:"night",l:"56",y:"video-portrait",mode:"M",aperture:"f/1.4",shutter:"1/50s",iso:"2500–6400",wb:"4000K / S-Cinetone",meter:"Center",focus:"Eye-AF"}
+];
+
+var conditionMap = {"sunny":"☀️ Sunny","cloudy":"☁️ Cloudy","rainy":"🌧️ Rainy"};
+var timeMap = {"golden":"🌅 Golden Hour","midday":"☀️ Midday","blue":"🌆 Blue Hour","night":"🌙 Night"};
+var lensMap = {"18-55":"18–55mm f/3.5–5.6","56":"56mm f/1.4"};
+var typeMap = {"photo-landscape":"📷 Photo — Landscape","photo-portrait":"📷 Photo — Portrait","video-cinematic":"🎥 Video — Cinematic","video-portrait":"🎥 Video — Portrait"};
+
+function lookup() {
+  var c = document.getElementById('condition').value;
+  var t = document.getElementById('timeofday').value;
+  var l = document.getElementById('lens').value;
+  var y = document.getElementById('type').value;
+  var resultDiv = document.getElementById('result');
+  if (!c || !t || !l || !y) {
+    resultDiv.innerHTML = '<div class="no-result"><p>👆 Select all four fields above to see your settings.</p></div>';
+    return;
+  }
+  var match = null;
+  for (var i = 0; i < MASTER_DATA.length; i++) {
+    var r = MASTER_DATA[i];
+    if (r.c === c && r.t === t && r.l === l && r.y === y) { match = r; break; }
+  }
+  if (!match) {
+    resultDiv.innerHTML = '<div class="no-result"><p>⚠️ No matching settings found. Try a different combination.</p></div>';
+    return;
+  }
+  var html = '<div class="result-card">';
+  html += '<h3>' + conditionMap[c] + ' · ' + timeMap[t] + '</h3>';
+  html += '<p style="color:rgba(255,255,255,0.5);margin-bottom:1rem;">' + lensMap[l] + ' — ' + typeMap[y] + '</p>';
+  html += '<div class="settings-grid">';
+  html += '<div class="setting-item"><span class="setting-label">Mode</span><span class="setting-value">' + match.mode + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">Aperture</span><span class="setting-value">' + match.aperture + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">Shutter</span><span class="setting-value">' + match.shutter + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">ISO</span><span class="setting-value">' + match.iso + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">WB / PP</span><span class="setting-value">' + match.wb + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">Metering</span><span class="setting-value">' + match.meter + '</span></div>';
+  html += '<div class="setting-item"><span class="setting-label">Focus</span><span class="setting-value">' + match.focus + '</span></div>';
+  html += '</div>';
+  html += '<div class="highlight-box">';
+  if (match.l === "56" && match.y.indexOf("portrait") !== -1) {
+    html += '<strong>💡 Tip:</strong> The 56mm f/1.4 is your portrait king. Shoot wide open for dreamy bokeh and subject isolation.';
+  } else if (match.l === "18-55" && match.y.indexOf("landscape") !== -1) {
+    html += '<strong>💡 Tip:</strong> At 18mm, focus ⅓ into the frame for maximum depth of field. Use a tripod if shutter drops below 1/30s.';
+  } else if (match.y.indexOf("video") !== -1) {
+    html += '<strong>💡 Tip:</strong> Keep shutter at 2× frame rate. Use S-Cinetone for quick grade, S-Log3 for maximum dynamic range in post.';
+  } else if (match.t === "night") {
+    html += '<strong>💡 Tip:</strong> Night shooting — use a tripod for landscapes, and open up the aperture for portraits. Don\'t fear high ISO on the a6700.';
+  } else {
+    html += '<strong>💡 Tip:</strong> Check your histogram and zebras (set to 94%). Small exposure adjustments may be needed based on exact light.';
+  }
+  html += '</div>';
+  resultDiv.innerHTML = html;
+}
+
+document.getElementById('condition').addEventListener('change', lookup);
+document.getElementById('timeofday').addEventListener('change', lookup);
+document.getElementById('lens').addEventListener('change', lookup);
+document.getElementById('type').addEventListener('change', lookup);
+</script>
+
+</body>
+</html>
